@@ -176,6 +176,9 @@ int main(int argc, char *argv[]) {
     QPushButton *histogramButton = new QPushButton("Display Histogram");
     histogramButton->setToolTip("Click to display the histogram of the image.");
 
+    QPushButton *helpButton = new QPushButton("Pomoc");
+    helpButton->setToolTip("Kliknij, aby wyświetlić pomoc.");
+
     layout->addWidget(resizeButton, 1, 0);
     layout->addWidget(rotateButton, 1, 1);
     layout->addWidget(adjustButton, 2, 0);
@@ -196,6 +199,7 @@ int main(int argc, char *argv[]) {
     layout->addWidget(loadButton, 7, 1);
 
     layout->addWidget(histogramButton, 8, 0);
+    layout->addWidget(helpButton, 8, 1);
 
 
     QObject::connect(resizeButton, &QPushButton::clicked, [&]() {
@@ -309,6 +313,25 @@ int main(int argc, char *argv[]) {
 
     QObject::connect(histogramButton, &QPushButton::clicked, [&]() {
         displayHistogram(currentImage);
+    });
+
+    QObject::connect(helpButton, &QPushButton::clicked, [&]() {
+        QMessageBox::information(nullptr, "Pomoc",
+                                 "1. **Resize to custom resolution**: Kliknij, aby zmienić rozmiar obrazu do niestandardowego rozmiaru.\n"
+                                 "2. **Rotate 90 Degrees**: Kliknij, aby obrócić obraz o 90 stopni.\n"
+                                 "3. **Increase Brightness/Contrast**: Kliknij, aby zwiększyć jasność i kontrast obrazu.\n"
+                                 "4. **Reset Filters**: Kliknij, aby zresetować wszystkie filtry i dostosowania.\n"
+                                 "5. **Apply Blur**: Kliknij, aby zastosować filtr rozmywania do obrazu.\n"
+                                 "6. **Apply Median Filter**: Kliknij, aby zastosować filtr medianowy do obrazu.\n"
+                                 "7. **Apply Gaussian Filter**: Kliknij, aby zastosować filtr Gaussa do obrazu.\n"
+                                 "8. **Apply Laplacian Filter**: Kliknij, aby zastosować filtr Laplace'a do obrazu.\n"
+                                 "9. **Detect Faces**: Kliknij, aby wykryć twarze na obrazie.\n"
+                                 "10. **Find Dominant Colors**: Kliknij, aby znaleźć dominujące kolory na obrazie.\n"
+                                 "11. **Save Image**: Kliknij, aby zapisać obraz do pliku.\n"
+                                 "12. **Convert to Grayscale**: Kliknij, aby przekonwertować obraz na odcienie szarości.\n"
+                                 "13. **Adjust Saturation**: Kliknij, aby dostosować nasycenie obrazu.\n"
+                                 "14. **Load Image**: Kliknij, aby załadować nowy obraz.\n"
+                                 "15. **Display Histogram**: Kliknij, aby wyświetlić histogram obrazu.\n");
     });
 
     window.show();
