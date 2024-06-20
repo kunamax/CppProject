@@ -131,7 +131,7 @@ int main(int argc, char *argv[]) {
     app.setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
 
     QWidget window;
-    window.setWindowTitle("Image Editor");
+    window.setWindowTitle("MiciuShop");
 
     QGridLayout *layout = new QGridLayout(&window);
     QLabel *imageLabel = new QLabel;
